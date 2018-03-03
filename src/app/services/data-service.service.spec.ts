@@ -1,15 +1,20 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { DataServiceService } from './data-service.service';
+import { DataService } from './data-service.service';
+import { ConfigServiceService } from './config-service.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('DataServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DataServiceService]
+      providers: [DataService,
+        { provide: ConfigServiceService, useValue: '' },
+        { provide: HttpClient, useValue: '' },
+      ]
     });
   });
 
-  it('should be created', inject([DataServiceService], (service: DataServiceService) => {
+  it('should be created', inject([DataService], (service: DataService) => {
     expect(service).toBeTruthy();
   }));
 });

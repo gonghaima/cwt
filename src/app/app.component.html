@@ -1,18 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <form>
+  <form #searchForm="ngForm" (ngSubmit)="searchForm.valid && onSubmit(searchForm)" novalidate>
     <div class="form-group">
       <label for="name">Key words</label>
-      <input type="text" class="form-control" id="name" required>
+      <input type="text" class="form-control" id="keywords"  [(ngModel)]="model.keywords" name="name" required>
     </div>
 
     <div class="form-group">
       <label for="alterEgo">URL</label>
-      <input type="text" class="form-control" id="alterEgo">
+      <input type="text" class="form-control" id="urltext" [(ngModel)]="model.urltext" name="urltext"  required>
     </div>
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
   <div>
-    **{{result[0]}}**
+    {{(result)?result+' in search result':''}} 
   </div>
 </div>

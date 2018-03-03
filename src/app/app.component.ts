@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DataServiceService } from './services/data-service.service';
+import { DataService } from './services/data-service.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -11,13 +11,14 @@ import { Observable } from 'rxjs/Observable';
 export class AppComponent implements OnInit {
   title = 'app';
   result;
-  ngOnInit() {
-    // this.dataServiceService.searchResult.subscribe();
-    // this.dataServiceService.search().subscribe(res => this.result = res);
-    //  this.dataServiceService.search().subscribe(r => this.result = r);
-  }
-  constructor(private dataServiceService: DataServiceService) {
-  //  var data = this.dataServiceService.search();
-    dataServiceService.search().subscribe(res => this.result = res);
+  model = { keywords: '', urltext: '' };
+  ngOnInit() { }
+  constructor(private dataService: DataService) {}
+
+  onSubmit(fm) {
+    this.dataService.search(this.model.keywords).subscribe(res => {
+      const analyzeResult = this.dataService.anylize('facere repellat provident occaecati', res);
+      this.result = analyzeResult;
+    });
   }
 }
