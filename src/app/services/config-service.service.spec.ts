@@ -2,7 +2,6 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { ConfigServiceService } from './config-service.service';
 import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
 
 describe('ConfigServiceService', () => {
   beforeEach(() => 
