@@ -11,6 +11,10 @@ export class DataService {
   constructor(private http: HttpClient, private configServiceService: ConfigServiceService) { }
 
   search(keywords, url) {
+    /**Get api url from config,
+     * then call api with search term
+     * then analyze the result
+     * return counter as an obervable */
     return this.configServiceService.getConfig()
       .pipe(
       mergeMap(urlObj => this.http.get(urlObj[AppConstant.SEARCH_URL_KEY] + `?term=${keywords}`)))
