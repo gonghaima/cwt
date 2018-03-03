@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
   ngOnInit() { }
   constructor(private dataService: DataService) {}
 
-  onSubmit(fm) {
+  onSubmit() {
     this.dataService.search(this.model.keywords).subscribe(res => {
-      const analyzeResult = this.dataService.anylize('facere repellat provident occaecati', res);
+      const analyzeResult = this.dataService.anylize(this.model.urltext, res);
       this.result = analyzeResult;
     });
   }
