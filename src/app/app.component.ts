@@ -13,12 +13,12 @@ export class AppComponent implements OnInit {
   result;
   model = { keywords: '', urltext: '' };
   ngOnInit() { }
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) { }
 
   onSubmit() {
-    this.dataService.search(this.model.keywords).subscribe(res => {
-      const analyzeResult = this.dataService.anylize(this.model.urltext, res);
-      this.result = analyzeResult;
+    this.dataService.search(this.model.keywords, this.model.urltext).subscribe(res => {
+      this.result = res;
     });
+
   }
 }
