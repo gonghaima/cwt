@@ -16,8 +16,7 @@ export class DataService {
      * then analyze the result
      * return counter as an obervable */
     return this.configServiceService.getConfig()
-      .pipe(
-      mergeMap(urlObj => this.http.get(urlObj[AppConstant.SEARCH_URL_KEY] + `?term=${keywords}`)))
+      .pipe(mergeMap(urlObj => this.http.get(urlObj[AppConstant.SEARCH_URL_KEY] + `?term=${keywords}`)))
       .pipe(mergeMap(apiData => Observable.of(this.anylize(url, apiData))));
   }
 
