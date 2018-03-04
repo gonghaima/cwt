@@ -19,6 +19,5 @@ export class AppComponent implements OnInit {
     this.dataService.search(this.model.keywords, this.model.urltext).subscribe(res => {
       this.result = res;
     });
-
   }
 }
